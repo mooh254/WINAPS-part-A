@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block pagetitle %}
+    Page Not Found
+{% endblock pagetitle %}
+
+{% block links %}
+<link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap"
+    rel="stylesheet"
+/>
+{% endblock links %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="mji-smart-air-app mb-3">
+      <section class="header-section">
+        <div class="row logo-navbar d-flex" id="navbar">
+          <div class="col-4 logo">
+            <img
+              src="{{ url_for('static', filename='/media/logo2.png') }}"
+              alt="mjismartair logo"
+              class="img-fluid"
+            />
+          </div>
+          <nav class="col-8 navbar pe-2">
+            <ul class="navbar-links mb-0 ps-0" id="sidebar">
+              <li onclick="hideSidebar()" class="close-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                >
+                  <path
+                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+                  />
+                </svg>
+              </li>
+              <li class="home-link" onclick="hideSidebar()">
+                <a href="/" class="home text-decoration-none">Home</a>
+              </li>
+              <li class="data-link" onclick="hideSidebar()">
+                <a href="/data" class="data text-decoration-none"
+                  >Data</a
+                >
+              </li>
+              <li class="monitoringmaps-link" onclick="hideSidebar()">
+                <a
+                  href="/monitoringmaps"
+                  class="monitoringmaps text-decoration-none"
+                  >Monitoring Maps</a
+                >
+              </li>
+              <li class="contact-link" onclick="hideSidebar()">
+                <a
+                  href="/contact"
+                  class="contact text-decoration-none"
+                  >Contact</a
+                >
+              </li>
+              <li class="userprofile-link" onclick="hideSidebar()">
+                <a
+                  href="/userprofile"
+                  class="userprofile text-decoration-none" id="active"
+                  ><i class="fa-regular fa-user fs-5"></i
+                ></a>
+              </li>
+            </ul>
+            <ul class="navbar-links mb-0 pt-1 ps-0 hideOnMobile">
+              <li class="home-link">
+                <a href="/" class="home text-decoration-none">Home</a>
+              </li>
+              <li class="data-link">
+                <a href="/data" class="data text-decoration-none"
+                  >Data</a
+                >
+              </li>
+              <li class="monitoringmaps-link">
+                <a
+                  href="/monitoringmaps"
+                  class="monitoringmaps text-decoration-none"
+                  >Monitoring Maps</a
+                >
+              </li>
+              <li class="contact-link">
+                <a
+                  href="/contact"
+                  class="contact text-decoration-none"
+                  >Contact</a
+                >
+              </li>
+              <li class="userprofile-link ms-2">
+                <a
+                  href="/userprofile"
+                  class="userprofile text-decoration-none" id="active"
+                  ><i class="fa-regular fa-user fs-6"></i
+                ></a>
+              </li>
+            </ul>
+            <div onclick="showSidebar()" class="menu-icon pe-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path
+                  d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+                />
+              </svg>
+            </div>
+          </nav>
+        </div>
+      </section>
+      <section style="font-size: medium;">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 100px 0;">
+            <p style="text-align: center; width: 30vw;">{{error}}</p>
+            <div class="form text-center mt-2">
+                <button id="return-btn" class="send-btn text-decoration-none" >Go Back</button>
+            </div>
+        </div>
+      </section>
+      <footer class="footer p-3 pt-0 ">
+        <div class="copyright d-flex justify-content-center">
+          <p class="brand">
+            <strong>MjiSmartAir © <span class="year"></span></strong> |
+            Website by WINAPS
+          </p>
+        </div>
+      </footer>
+    </div>
+</div>
+<script>
+    document.getElementById("return-btn").addEventListener("click",()=>{
+        window.location.href="/"
+    })
+</script>
+{% endblock body %}

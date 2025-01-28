@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+{% block pagetitle %}
+    Home
+{% endblock pagetitle %}
+
+{% block links %}
+<link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap"
+    rel="stylesheet"
+/>
+<script type="module" src="{{ url_for('static', filename='/src/script.js') }}" defer></script>
+{% endblock links %}
+
+
+{% block body %}
+<div class="container-fluid">
+    <div class="mji-smart-air-app mb-3">
+      <section class="header-section">
+        <div class="row logo-navbar d-flex" id="navbar">
+          <div class="col-4 logo">
+            <img
+              src="{{ url_for('static',filename='/media/logo2.png') }}"
+              alt="mjismartair logo"
+              class="img-fluid"
+            />
+          </div>
+          <nav class="col-8 navbar pe-2">
+            <ul class="navbar-links mb-0 ps-0" id="sidebar">
+              <li onclick="hideSidebar()" class="close-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                >
+                  <path
+                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+                  />
+                </svg>
+              </li>
+              <li class="home-link" onclick="hideSidebar()">
+                <a href="/" class="home text-decoration-none" id="active"
+                  >Home</a
+                >
+              </li>
+              <li class="data-link" onclick="hideSidebar()">
+                <a href="/data" class="data text-decoration-none"
+                  >Data</a
+                >
+              </li>
+              <li class="monitoringmaps-link" onclick="hideSidebar()">
+                <a
+                  href="/monitoringmaps"
+                  class="monitoringmaps text-decoration-none"
+                  >Monitoring Maps</a
+                >
+              </li>
+              <li class="contact-link" onclick="hideSidebar()">
+                <a href="/contact" class="contact text-decoration-none"
+                  >Contact</a
+                >
+              </li>
+              <li class="userprofile-link" onclick="hideSidebar()">
+                <a
+                  href="/login"
+                  class="userprofile text-decoration-none"
+                  ><i class="fa-regular fa-user fs-5"></i
+                ></a>
+              </li>
+            </ul>
+            <ul class="navbar-links mb-0 pt-1 ps-0 hideOnMobile">
+              <li class="home-link">
+                <a href="/" class="home text-decoration-none" id="active"
+                  >Home</a
+                >
+              </li>
+              <li class="data-link">
+                <a href="/data" class="data text-decoration-none"
+                  >Data</a
+                >
+              </li>
+              <li class="monitoringmaps-link">
+                <a
+                  href="/monitoringmaps"
+                  class="monitoringmaps text-decoration-none"
+                  >Monitoring Maps</a
+                >
+              </li>
+              <li class="contact-link">
+                <a href="/contact" class="contact text-decoration-none"
+                  >Contact</a
+                >
+              </li>
+              <li class="userprofile-link ms-2">
+                <a
+                  href="/login"
+                  class="userprofile text-decoration-none"
+                  ><i class="fa-regular fa-user fs-6"></i
+                ></a>
+              </li>
+            </ul>
+            <div onclick="showSidebar()" class="menu-icon pe-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path
+                  d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+                />
+              </svg>
+            </div>
+          </nav>
+        </div>
+      </section>
+      <aside>
+        <div class="gauges">
+          <div class="CO">
+            <img src="{{ url_for('static',filename='/media/gauge1.png') }}" alt="" />
+            <br />
+            <strong> CO </strong>
+          </div>
+          <div class="CO">
+            <img src="{{ url_for('static',filename='/media/gauge2.png') }}" alt="" />
+            <br />
+            <strong> CO </strong>
+          </div>
+          <div class="CO">
+            <img src="{{ url_for('static',filename='/media/gauge3.png') }}" alt="" />
+            <br />
+            <strong> CO </strong>
+          </div>
+          <div class="CO">
+            <img src="{{ url_for('static',filename='/media/gauge4.png') }}" alt="" />
+            <br />
+            <strong> CO </strong>
+          </div>
+          <div class="CO">
+            <img src="{{ url_for('static',filename='/media/gauge5.png') }}" alt="" />
+            <br />
+            <strong> CO </strong>
+          </div>
+        </div>
+      </aside>
+      <main>
+        <div class="intro">
+          <h4>Air Quality for MJI</h4>
+          <p>
+            Welcome to MjiSmartAir, your gateway to visualize the quality of
+            air in any part of Mji City. Explore our resources, and stay
+            updated in latest air quality level in your area.
+          </p>
+        </div>
+      </main>
+      <div class="forecast-title d-flex justify-content-center w-100"><strong>FORECAST</strong></div>
+      <div class="forecast" id="forecast">
+        
+        <div class="day-1">
+          <strong id="day-1"> Fri </strong>
+          <br />
+          <span id="humidity-day1">10% </span>
+          <br />
+
+          <span class="icon1">
+            <img
+              id="air-quality-icon-day1"
+              src="{{ url_for('static',filename='/media/green-very-low.png') }}"
+              alt="Air Quality Icon"
+              class="img-fluid"
+            />
+          </span>
+          <br />
+          <span id="air-quality-day1">Very Low</span>
+        </div>
+        <div class="day-2">
+          <strong id="day-2"> Sat </strong>
+          <br />
+          <span id="humidity-day2">20% </span>
+          <br />
+          <span class="icon2">
+            <img
+              id="air-quality-icon-day2"
+              src="{{ url_for('static',filename='/media/yellow-low.png') }}"
+              alt="Air Quality Icon"
+              class="img-fluid"
+            />
+          </span>
+          <br />
+          <span id="air-quality-day2">Low</span>
+        </div>
+        <div class="day-3">
+          <strong id="day-3"> Sun </strong>
+          <br />
+          <span id="humidity-day3">30% </span>
+          <br />
+          <span class="icon3">
+            <img
+              id="air-quality-icon-day3"
+              src="{{ url_for('static',filename='/media/orange-moderate.png') }}"
+              alt="Air Quality Icon"
+              class="img-fluid"
+            />
+          </span>
+          <br />
+          <span id="air-quality-day3">Moderate</span>
+        </div>
+        <div class="day-4">
+          <strong id="day-4"> Mon </strong>
+          <br />
+          <span id="humidity-day4">40% </span>
+          <br />
+          <span class="icon4">
+            <img
+              id="air-quality-icon-day4"
+              src="{{ url_for('static',filename='/media/purple-high.png') }}"
+              alt="Air Quality Icon"
+              class="img-fluid"
+            />
+          </span>
+          <br />
+          <span id="air-quality-day4">High</span>
+        </div>
+        <div class="day-5">
+          <strong id="day-5"> Tue </strong>
+          <br />
+          <span id="humidity-day5">50% </span>
+          <br />
+          <span class="icon5">
+            <img
+              id="air-quality-icon-day5"
+              src="{{ url_for('static',filename='/media/red-very-high.png') }}"
+              alt="Air Quality Icon"
+              class="img-fluid"
+            />
+          </span>
+          <br />
+          <span id="air-quality-day5">Very High</span>
+        </div>
+      </div>
+      <footer class="footer p-3">
+        <div class="copyright d-flex justify-content-center">
+          <p class="brand">
+            <strong>MjiSmartAir © <span class="year"></span></strong> |
+            Website by WINAPS
+          </p>
+        </div>
+      </footer>
+    </div>
+</div>
+{% endblock body %}
